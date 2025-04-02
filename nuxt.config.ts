@@ -12,4 +12,22 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  vite: {
+    build: {
+      target: ['es2022', 'edge89', 'firefox89', 'chrome89', 'safari15']
+    },
+  },
+  nitro: {
+    esbuild: {
+      options: {
+        // Node.js のバージョンのみ指定すればOK
+        target: 'es2022',
+      },
+    },
+  },
+  runtimeConfig: {
+    pokeapi: {
+      baseURL: 'https://pokeapi.co/api/v2/',
+    },
+  },
 })
