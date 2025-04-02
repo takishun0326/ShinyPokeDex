@@ -10,7 +10,7 @@ export default defineCachedEventHandler(
             // クエリのバリデーション，型安全なクエリとして返却
             const query = await getValidatedQuery(event, validatePokeomonsQuery)
             // クエリを元にポケモン一覧の取得
-            const pokemons = getPokemons(query)
+            const pokemons = await getPokemons(query)
 
             return pokemons
         } catch (error) {

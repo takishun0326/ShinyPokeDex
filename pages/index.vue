@@ -8,7 +8,9 @@ const { pokemons } = await usePokemons();
     <h1 class="text-2xl font-bold">PokeDex</h1>
     <ul>
       <li v-for="pokemon in pokemons" :key="pokemon.name">
-        {{ pokemon.name }}
+        <NuxtLink :to="`/pokemons/${pokemon.name}`">
+          {{ pokemon.name }}
+        </NuxtLink>
       </li>
     </ul>
   </div>

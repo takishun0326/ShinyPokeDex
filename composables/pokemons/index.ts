@@ -4,6 +4,23 @@ type Query = Partial<{
     limit: number
 }>
 
+export const usePokemon = async (name: string) => {
+    // サーバからAPIリクエスト
+    const { data } = await useFetch(`/api/v1/pokemons/${name}`, {
+        default: () => null,
+        transform: (response) => {
+            if (!response) {
+                return null
+            } else {
+                return response
+            }
+        },
+    })
+
+    return { pokemon: data }
+}
+
+
 export const usePokemons = async (query: Query = {}) => {
     // サーバからAPIリクエスト
     const { data } = await useFetch('/api/v1/pokemons', {
