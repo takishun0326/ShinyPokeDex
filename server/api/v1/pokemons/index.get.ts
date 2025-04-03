@@ -11,7 +11,6 @@ export default defineCachedEventHandler(
             const query = await getValidatedQuery(event, validatePokeomonsQuery)
             // クエリを元にポケモン一覧の取得
             const pokemons = await getPokemons(query)
-
             return pokemons
         } catch (error) {
             console.error('APIリクエスト中にエラーが発生しました。', error)

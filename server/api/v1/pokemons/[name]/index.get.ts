@@ -10,7 +10,6 @@ export default defineCachedEventHandler(
             const { name } = await getValidatedRouterParams(event, validatePokemonParams)
             // パラメータのポケモン名を元にポケモン詳細を取得
             const pokemon = await getPokemon(name)
-
             return pokemon
         } catch (error) {
             console.error('APIリクエスト中にエラーが発生しました。', error)

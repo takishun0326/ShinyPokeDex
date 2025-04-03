@@ -30,7 +30,7 @@ export const usePokemons = async (query: Query = {}) => {
             if (!response) {
                 return []
             }
-            return response.results
+            return response
         },
     })
 
