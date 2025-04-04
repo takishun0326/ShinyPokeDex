@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   postcss: {
     plugins: { tailwindcss: {} },
   },
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/eslint', '@nuxt/icon'],
   eslint: {
     config: {
       stylistic: true,
