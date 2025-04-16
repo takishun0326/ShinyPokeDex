@@ -2,14 +2,37 @@
 import { usePokemons } from "~/composables/pokemons";
 import { formatName } from "~/utils/format";
 
-const { pokemons } = await usePokemons();
+const { pokemons, hasMore, fetchNextPokemons, isLoading } = await usePokemons();
+// スクロール検知 IntersectionObserver
+const sentinel = ref(null);
+// console.log(hasMore);
+
+onMounted(() => {
+  if (!sentinel.value) return; // sentinelが存在しないなら処理を中断
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && hasMore.value && !isLoading.value) {
+        fetchNextPokemons(); // 追加データを取得
+        console.log(pokemons);
+      }
+    });
+  });
+  // sentinelを監視
+  observer.observe(sentinel.value);
+
+  // コンポーネントがアンマウントされたらObserverを切断
+  onUnmounted(() => {
+    observer.disconnect();
+  });
+});
+
 if (pokemons.value.length <= 0) {
   throw createError({ statusCode: 404, statusMessage: "Pokemon Not Found" });
 }
 </script>
 
 <template>
-  <div class="py-16">
+  <div class="space-y-4 py-16">
     <ul
       v-if="pokemons"
       class="grid grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] gap-x-4 gap-y-16 px-4"
@@ -28,7 +51,7 @@ if (pokemons.value.length <= 0) {
           />
           <div class="space-y-2">
             <p class="text-center text-sm font-bold leading-none opacity-70">
-              N° {{ pokemon.id }}
+              No. {{ pokemon.id }}
             </p>
             <p class="text-center text-lg font-bold leading-none">
               {{ formatName(pokemon.name) }}
@@ -46,5 +69,17 @@ if (pokemons.value.length <= 0) {
         </NuxtLink>
       </li>
     </ul>
+    <div
+      v-if="hasMore"
+      ref="sentinel"
+      class="flex h-16 w-full items-center justify-center"
+    >
+      <Icon
+        name="mynaui:spinner"
+        class="h-10 w-10 animate-spin text-gray-700"
+        width="40"
+        height="40"
+      />
+    </div>
   </div>
 </template>

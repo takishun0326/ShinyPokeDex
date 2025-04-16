@@ -16,7 +16,7 @@ const error = useError();
           />
           <div class="space-y-2">
             <p class="text-center font-bold leading-none opacity-70">
-              N° {{ error.statusCode }}
+              Status No. {{ error.statusCode }}
             </p>
             <p class="text-center text-2xl font-bold leading-none">
               {{ error.statusMessage }}
