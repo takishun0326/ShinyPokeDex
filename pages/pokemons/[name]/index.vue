@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { usePokemon } from "~/composables/pokemons";
+import { useShinyMode } from '~/composables/pokemons/shiny-mode'
 import { formatName } from "~/utils/format";
 import { calculatePercentage } from "~/utils/calculate";
 
 const route = useRoute("pokemon-name");
 const router = useRouter();
 const { pokemon } = await usePokemon(route.params.name as string);
+const { isShiny } = useShinyMode('shiny')
+
 if (pokemon.value === null) {
   throw createError({ statusCode: 404, statusMessage: "Pokemon Not Found" });
 }
@@ -15,7 +18,7 @@ if (pokemon.value === null) {
   <div class="mx-auto max-w-[800px] space-y-4 p-4">
     <div v-if="pokemon" class="space-y-4">
       <img
-        :src="pokemon.image"
+       :src="isShiny ? pokemon.image.shiny : pokemon.image.default"
         alt=""
         width="120"
         height="120"

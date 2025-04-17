@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { usePokemons } from "~/composables/pokemons";
+import { useShinyMode } from "~/composables/pokemons/shiny-mode";
 import { formatName } from "~/utils/format";
 
 const { pokemons, hasMore, fetchNextPokemons, isLoading } = await usePokemons();
+const { isShiny } = useShinyMode("shiny")
+
 // スクロール検知 IntersectionObserver
 const sentinel = ref(null);
 // console.log(hasMore);
@@ -43,7 +46,7 @@ if (pokemons.value.length <= 0) {
           class="group relative box-border block h-full rounded-xl border-2 border-transparent px-4 pb-4 pt-14 nm-flat-gray-100-lg hover:border-gray-300"
         >
           <img
-            :src="pokemon.image"
+            :src="isShiny ? pokemon.image.shiny : pokemon.image.default"
             alt=""
             width="120"
             height="120"
