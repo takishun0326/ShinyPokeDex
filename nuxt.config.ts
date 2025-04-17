@@ -30,4 +30,7 @@ export default defineNuxtConfig({
       baseURL: 'https://pokeapi.co/api/v2/',
     },
   },
+  experimental: {
+    viewTransition: true,
+  },
 })
