@@ -6,7 +6,7 @@ import { calculatePercentage } from "~/utils/calculate";
 
 const route = useRoute("pokemon-name");
 const router = useRouter();
-const { pokemon } = await usePokemon(route.params.name as string);
+const { pokemon, pokemonImage } = await usePokemon(route.params.name as string);
 const { isShiny } = useShinyMode('shiny')
 
 if (pokemon.value === null) {
@@ -18,7 +18,7 @@ if (pokemon.value === null) {
   <div class="mx-auto max-w-[800px] space-y-4 p-4">
     <div v-if="pokemon" class="space-y-4">
       <img
-       :src="isShiny ? pokemon.image.shiny : pokemon.image.default"
+       :src="pokemonImage"
         alt=""
         width="120"
         height="120"
