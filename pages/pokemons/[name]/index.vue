@@ -12,6 +12,12 @@ const { isShiny } = useShinyMode('shiny')
 if (pokemon.value === null) {
   throw createError({ statusCode: 404, statusMessage: "Pokemon Not Found" });
 }
+
+ useSeoMeta({
+   title: `ShinyPokeDex | ${formatName(pokemon.value.name)}`,
+   ogTitle: `ShhinyPokeDex | ${formatName(pokemon.value.name)}`,
+   ogImage: pokemon.value.image.still.default,
+ })
 </script>
 
 <template>

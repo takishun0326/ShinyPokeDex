@@ -1,12 +1,27 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
+      title: 'ShinyPokeDex',
+      meta: [
+        {
+          name: 'description',
+          content: 'Discover detailed information about each Pokémon, including their types, abilities, stats, and more',
+        },
+        { name: 'robots', content: 'noindex, nofollow' },
+      ],
+    },
+  },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/css/tailwind.css'],
   postcss: {
     plugins: { tailwindcss: {} },
   },
-  modules: ['@nuxt/eslint', '@nuxt/icon'],
+  modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxthub/core'],
   eslint: {
     config: {
       stylistic: true,
