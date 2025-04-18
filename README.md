@@ -1,18 +1,24 @@
-# Nuxt Minimal Starter
+# ✨ Shiny PokeDex（色違い全国図鑑）
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A beautiful and minimal Pokédex built with [Nuxt 3](https://nuxt.com), allowing users to discover detailed information about each Pokémon — including their types, abilities, stats, and more.
 
-## Now in Development!
+🚀 **Live Site:** [https://shiny-poke-dex.nuxt.dev/](https://shiny-poke-dex.nuxt.dev/)
 
-![image](https://github.com/user-attachments/assets/f6707c9f-3a4f-481c-a3d0-2cdc4b398bfc)
+![ShinyPokeDex ScreenShot](https://github.com/user-attachments/assets/d718cc65-34b1-496d-8253-cc0e036b6610)
+
 
 ---
-![image](https://github.com/user-attachments/assets/5476e26f-66ac-42dc-8a5f-ec280098e39f)
 
+## 📦 Environments
 
-## Setup
+- Node.js >= **20.0.0**
+- Package managers supported: `npm`, `pnpm`, `yarn`, `bun`
 
-Make sure to install dependencies:
+---
+
+## 🛠 Setup
+
+Install dependencies with your preferred package manager:
 
 ```bash
 # npm
@@ -28,9 +34,8 @@ yarn install
 bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## 🧪 Development
+Start the local development server on http://localhost:3000:
 
 ```bash
 # npm
@@ -45,39 +50,3 @@ yarn dev
 # bun
 bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
